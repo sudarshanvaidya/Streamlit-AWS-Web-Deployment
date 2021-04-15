@@ -1,0 +1,33 @@
+
+
+
+
+Steps for deploying Streamlit on AWS 
+
+Reference: https://towardsdatascience.com/how-to-deploy-a-streamlit-app-using-an-amazon-free-ec2-instance-416a41f69dc3
+
+
+
+
+Steps for making changes on AWS instance 
+
+1. Log in to AWS console and go to instances (for running instances)
+
+2. Log in to "Ubuntu": Open Putty. In session put IP address, and in SSH--> Auth put pem file path. 
+
+3. List files to verify using command: ls 
+
+4. Upload files from local to instance: Run from Windows Command Prompt
+scp -i ./AIML/13Reco/streamlit.pem ./AIML/13Reco/ArtReco.py ubuntu@ec2-13-59-152-244.us-east-2.compute.amazonaws.com:~/
+scp -i ./AIML/13Reco/streamlit.pem ./AIML/13Reco/tfidf_nmf_12topics.csv ubuntu@ec2-13-59-152-244.us-east-2.compute.amazonaws.com:~/
+
+5. Create TMUX session for perpetual running (beyond the session) 
+Run this command on ubuntu: tmux new -s StreamSession
+Then run the app: streamlit run ArtReco.py
+detach the TMUX session: press Ctrl+B and then D (Don’t press Ctrl when pressing D)
+
+
+http://18.217.242.45:8501
+
+scp -i ./AIML/13Reco/streamlit.pem ./AIML/13Reco/ArtReco.py ubuntu@ec2-18-217-242-45.us-east-2.compute.amazonaws.com:~/
+
